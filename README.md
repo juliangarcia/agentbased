@@ -20,12 +20,12 @@ Implementing the interfaces above should be enough to have a working simulation.
 Then, a process and a simulation should be built, typically as follows:
 
 ```java
-process = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, mapping, intensityOfSelection,mutator, r);
+this.process = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, 
+mapping, intensityOfSelection,mutator, r);
 simulation = new AgentBasedSimulation(this.process);
 ```
 
-
-
+Simulation the provides methods to estimate fixation probabilities, stationary distribution, and average population  payoffs throughout a run. Please check the Javadocs for specifics.  
 
 
 ##Extending it##
