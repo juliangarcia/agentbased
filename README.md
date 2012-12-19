@@ -6,9 +6,25 @@ This package provides a framework for **agent-based evolutionary dynamics with J
 
 Agent-based essentially means that fitness is a random variable, and that your individuals can be complex objects, with a state and methods of their own. In a typicall application you have to provide the following implementations.
 
+
 * Agent.
 
 * AgentBasedPayoffCalculator.
+
+* AgentBasedPopulationFactory
+
+* AgentMutator
+
+Implementing the interfaces above should be enough to have a working simulation. 
+
+Then, a process and a simulation should be built, typically as follows:
+
+```java
+process = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, mapping, intensityOfSelection,mutator, r);
+simulation = new AgentBasedSimulation(this.process);
+```
+
+
 
 
 
