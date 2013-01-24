@@ -19,6 +19,8 @@ public class AgentBasedPopulationImpl implements AgentBasedPopulation {
 
 	public static final boolean EXTENSIVE_TO_STRING = false;
 	private Agent[] agentArray;
+	
+	public static String FORMAT = "Strategy : %s, Count : %d";
 
 	private double[] payoffsArray;
 	private int size;
@@ -76,8 +78,8 @@ public class AgentBasedPopulationImpl implements AgentBasedPopulation {
 		for (Iterator<Agent> iterator = multiset.elementSet().iterator(); iterator
 				.hasNext();) {
 			Agent agent = (Agent) iterator.next();
-			stringView.add("Strategy : " + agent.toString() + ", Count : "
-					+ multiset.count(agent));
+			//stringView.add("Strategy : " + agent.toString() + ", Count : "+ multiset.count(agent));
+			stringView.add(String.format(FORMAT, agent.toString(), multiset.count(agent)));
 		}
 		Joiner joiner = Joiner.on("; ").skipNulls();
 		return joiner.join(stringView);
@@ -86,9 +88,9 @@ public class AgentBasedPopulationImpl implements AgentBasedPopulation {
 	@Override
 	public String toString() {
 		if (EXTENSIVE_TO_STRING)
-			return "AgentBasedPopulationImpl [agentArray="
-					+ Arrays.toString(agentArray) + ", payoffsArray="
-					+ Arrays.toString(payoffsArray) + ", size=" + size + "]";
+			return "Population [agents="
+					+ Arrays.toString(agentArray) + ", payoffs="
+					+ Arrays.toString(payoffsArray) + "]";
 		return frequenciesToString();
 	}
 
