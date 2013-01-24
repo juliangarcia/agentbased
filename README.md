@@ -27,6 +27,10 @@ simulation = new AgentBasedSimulation(this.process);
 
 Simulation the provides methods to estimate fixation probabilities, stationary distribution, and average population  payoffs throughout a run. Please check the Javadocs for specifics.  
 
+##Building##
+
+You can use maven with the provided pom.xml.
+
 
 ##Extending it##
 
