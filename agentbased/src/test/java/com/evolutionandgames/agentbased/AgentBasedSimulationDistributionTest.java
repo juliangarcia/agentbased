@@ -55,7 +55,10 @@ public class AgentBasedSimulationDistributionTest {
 		int reportEveryTimeSteps = 2;
 		Map<Agent, Double> map = simulation.estimateStationaryDistribution(burningTimePerEstimate, samplesPerEstimate, numberOfEstimates, reportEveryTimeSteps ,seed, factory);
 		Assert.assertEquals(2, map.size());
-		//System.out.println(map);
+		System.out.println(map);
+		for (Map.Entry<Agent, Double> entry : map.entrySet()){
+			System.out.println(entry.getKey().getClass());
+		}
 		Assert.assertEquals(0.5, map.get(new AgentSimple(0)), DELTA);
 		Assert.assertEquals(0.5, map.get(new AgentSimple(1)), DELTA);
 	}
@@ -86,6 +89,7 @@ public class AgentBasedSimulationDistributionTest {
 		Map<Agent, Double> map = simulation.estimateStationaryDistribution(burningTimePerEstimate, samplesPerEstimate, numberOfEstimates, reportEveryTimeSteps, seed, factory);
 		Assert.assertEquals(3, map.size());
 		//System.out.println(map);
+		System.out.println(map.get(new AgentSimple(0)));
 		Assert.assertEquals(1.0/3.0, map.get(new AgentSimple(0)), DELTA);
 		Assert.assertEquals(1.0/3.0, map.get(new AgentSimple(1)), DELTA);
 		Assert.assertEquals(1.0/3.0, map.get(new AgentSimple(2)), DELTA);

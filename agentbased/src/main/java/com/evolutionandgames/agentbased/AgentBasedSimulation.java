@@ -3,14 +3,9 @@ package com.evolutionandgames.agentbased;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -21,7 +16,6 @@ import org.supercsv.prefs.CsvPreference;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 import com.evolutionandgames.jevodyn.utils.Random;
 import com.google.common.util.concurrent.AtomicLongMap;
-
 
 /**
  * Provides methods for simulating a given AgentBased process.
@@ -98,21 +92,38 @@ public class AgentBasedSimulation {
 		return ans;
 	}
 
-	private AtomicLongMap<Agent> buildMultiset(int reportEveryTimeSteps, int numberOfEstimates, int burningTimePerEstimate, int samplesPerEstimate, AgentBasedPopulationFactory factory) {
+	private AtomicLongMap<Agent> sampleAndCount(int reportEveryTimeSteps,
+			int numberOfEstimates, int burningTimePerEstimate,
+			int samplesPerEstimate, AgentBasedPopulationFactory factory) {
+		// estimate final size of the bag, to see if it will break
+		if (numberOfEstimates * samplesPerEstimate
+				* this.process.getPopulation().getSize() >= Long.MAX_VALUE) {
+			throw new IllegalArgumentException(
+					"The bag will break, it  will contain more items than Long can hold");
+		}
 		AtomicLongMap<Agent> map = AtomicLongMap.create();
+		long bagSize = 0;
 		for (int estimate = 0; estimate < numberOfEstimates; estimate++) {
 			process.reset(factory.createPopulation());
 			for (int burningStep = 0; burningStep < burningTimePerEstimate; burningStep++) {
 				process.step();
 			}
-			for (int sample = 0; sample < samplesPerEstimate; sample++) {
+			long sample = 0;
+			while (sample < samplesPerEstimate) {
 				process.step();
-				if (sample % reportEveryTimeSteps == 0) {
+				if (process.getTimeStep() % reportEveryTimeSteps == 0) {
 					for (int i = 0; i < this.process.getPopulation().getSize(); i++) {
-						map.incrementAndGet(this.process.getPopulation().getAgent(i));
+						map.incrementAndGet(this.process.getPopulation()
+								.getAgent(i));
+						bagSize++;
 					}
+					sample++;
 				}
 			}
+		}
+		if (bagSize >= Long.MAX_VALUE) {
+			throw new IllegalArgumentException(
+					"The bag is broken, it contains more items than a Long can hold");
 		}
 		return map;
 	}
@@ -129,10 +140,10 @@ public class AgentBasedSimulation {
 	 * @param numberOfEstimates
 	 *            the process is repeatedas many times as number of estimate
 	 *            requires
-	 *@param reportEveryTimeSteps
-	 *     takes one sample every this number of steps.           
-	 *            
-	 * @param seed 
+	 * @param reportEveryTimeSteps
+	 *            takes one sample every this number of steps.
+	 * 
+	 * @param seed
 	 *            for reproduciblity.
 	 * @param factory
 	 *            a class that generates a new starting population for every
@@ -140,33 +151,28 @@ public class AgentBasedSimulation {
 	 * @return A Map of Agent to a double frequency.
 	 */
 	public Map<Agent, Double> estimateStationaryDistribution(
-			int burningTimePerEstimate, 
-			int timeStepsPerEstimate,
-			int numberOfEstimates,
-			int reportEveryTimeSteps, 
-			Long seed,
+			int burningTimePerEstimate, int timeStepsPerEstimate,
+			int numberOfEstimates, int reportEveryTimeSteps, Long seed,
 			AgentBasedPopulationFactory factory) {
 		Random.seed(seed);
-		AtomicLongMap<Agent> multiset = buildMultiset(reportEveryTimeSteps, numberOfEstimates, burningTimePerEstimate, timeStepsPerEstimate, factory);
+		AtomicLongMap<Agent> multiset = sampleAndCount(reportEveryTimeSteps,
+				numberOfEstimates, burningTimePerEstimate,
+				timeStepsPerEstimate, factory);
 		// build the answer
 		long size = multiset.sum();
-		// create a view ordered by count
-		SortedSet<Map.Entry<Agent, Long>> sortedset = new TreeSet<Map.Entry<Agent, Long>>(
-	            new Comparator<Map.Entry<Agent, Long>>() {
-	                //@Override
-	                public int compare(Map.Entry<Agent, Long> e1,
-	                        Map.Entry<Agent, Long> e2) {
-	                    return -1*(e1.getValue().compareTo(e2.getValue()));
-	                }
-	            });
-		sortedset.addAll(multiset.asMap().entrySet());
+		Map<Agent, Long> multisetAsMap = multiset.asMap();
+		//before we cared for order, now we do not
+		//Map<Agent, Double> ans = new TreeMap<Agent, Double>(new ValueComparator(multisetAsMap));
 		Map<Agent, Double> ans = new HashMap<Agent, Double>();
-		for (Iterator<Entry<Agent, Long>> iterator = sortedset.iterator(); iterator.hasNext();) {
-			Entry<Agent, Long> entry = (Entry<Agent, Long>) iterator.next();
-			ans.put(entry.getKey(),  ((double)entry.getValue()/(double)size));
+		for (Map.Entry<Agent, Long> entry : multisetAsMap.entrySet()){
+			ans.put(entry.getKey(), (double)entry.getValue()/size);
 		}
 		return ans;
 	}
+	
+	
+	
+	
 
 	/**
 	 * Simulates evolution writing the ouput to a file.
