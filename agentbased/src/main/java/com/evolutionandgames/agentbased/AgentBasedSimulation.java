@@ -126,6 +126,8 @@ public class AgentBasedSimulation {
 					"The bag is broken, it contains more items than a Long can hold");
 		}
 		return map;
+		//TODO: A cleaning strategy for the map.
+		
 	}
 
 	/**
