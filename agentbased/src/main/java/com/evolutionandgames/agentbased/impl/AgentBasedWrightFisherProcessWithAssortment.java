@@ -50,7 +50,7 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 	}
 
 	private void applyMutation() {
-		//everybody gets mutated, the probability of this happening is responsability of the mutator implementation
+		//everybody gets mutated, the probability of this happening is responsibility of the mutator implementation
 		for (int i = 0; i < population.getSize(); i++) {
 				Agent thisAgent = this.population.getAgent(i);
 				population.addOneIndividual(this.mutator.mutate(thisAgent), i);
