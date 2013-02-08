@@ -126,8 +126,8 @@ public class AgentBasedSimulation {
 					"The bag is broken, it contains more items than a Long can hold");
 		}
 		return map;
-		//TODO: A cleaning strategy for the map.
-		
+		// TODO: A cleaning strategy for the map.
+
 	}
 
 	/**
@@ -163,49 +163,46 @@ public class AgentBasedSimulation {
 		// build the answer
 		long size = multiset.sum();
 		Map<Agent, Long> multisetAsMap = multiset.asMap();
-		//before we cared for order, now we do not
-		//Map<Agent, Double> ans = new TreeMap<Agent, Double>(new ValueComparator(multisetAsMap));
+		// before we cared for order, now we do not
+		// Map<Agent, Double> ans = new TreeMap<Agent, Double>(new
+		// ValueComparator(multisetAsMap));
 		Map<Agent, Double> ans = new HashMap<Agent, Double>();
-		for (Map.Entry<Agent, Long> entry : multisetAsMap.entrySet()){
-			ans.put(entry.getKey(), (double)entry.getValue()/size);
+		for (Map.Entry<Agent, Long> entry : multisetAsMap.entrySet()) {
+			ans.put(entry.getKey(), (double) entry.getValue() / size);
 		}
 		return ans;
 	}
-	
-	
-	
-	
 
 	/**
 	 * Simulates evolution writing the ouput to a file.
-	 * 
 	 * @param numberOfTimeSteps
 	 * @param reportEveryTimeSteps
 	 * @param seed
 	 * @param fileName
+	 * @param extraColumnProcessor
 	 * @throws IOException
 	 */
 	public void simulateTimeSeries(int numberOfTimeSteps,
-			int reportEveryTimeSteps, Long seed, String fileName)
-			throws IOException {
+			int reportEveryTimeSteps, Long seed, String fileName,
+			ExtraColumnsProcessor extraColumnProcessor) throws IOException {
 		Random.seed(seed);
 		ICsvListWriter listWriter = null;
-		String[] header = this.buildHeader();
-		CellProcessor[] processors = this.getProcessors();
+		String[] header = this.buildHeader(extraColumnProcessor);
+		CellProcessor[] processors = this.getProcessors(extraColumnProcessor);
 		try {
 			listWriter = new CsvListWriter(new FileWriter(fileName),
 					CsvPreference.STANDARD_PREFERENCE);
 			// write the header
 			listWriter.writeHeader(header);
 			// write the initial zero step content
-			listWriter.write(this.currentStateRow(process), processors);
+			listWriter.write(this.currentStateRow(process, extraColumnProcessor), processors);
 			// repeat for as many steps as requested
 			for (int i = 0; i < numberOfTimeSteps; i++) {
 				// step
 				process.step();
 				// if time to repor, report
 				if (process.getTimeStep() % reportEveryTimeSteps == 0) {
-					listWriter.write(this.currentStateRow(process), processors);
+					listWriter.write(this.currentStateRow(process, extraColumnProcessor), processors);
 				}
 			}
 		} finally {
@@ -216,19 +213,40 @@ public class AgentBasedSimulation {
 		}
 
 	}
+	/**
+	 * 
+	 * @param numberOfTimeSteps
+	 * @param reportEveryTimeSteps
+	 * @param seed
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public void simulateTimeSeries(int numberOfTimeSteps,
+			int reportEveryTimeSteps, Long seed, String fileName) throws IOException {
+		simulateTimeSeries(numberOfTimeSteps, reportEveryTimeSteps, seed, fileName, null);
+	}
+	
+	
 
 	/**
 	 * Helper method to write the csv file
 	 * 
 	 * @return
 	 */
-	private CellProcessor[] getProcessors() {
-
-		CellProcessor timeStepProcessor = new NotNull();
-		CellProcessor populationProcessor = new NotNull();
-		CellProcessor totalPayoffProcessor = new NotNull();
-		final CellProcessor[] processors = { timeStepProcessor,
-				totalPayoffProcessor, populationProcessor };
+	private CellProcessor[] getProcessors(
+			ExtraColumnsProcessor extraColumnProcessor) {
+		// TODO: does the next thing really need the final keyword
+		CellProcessor[] processors;
+		// now possible extra things
+		if (extraColumnProcessor == null) {
+			processors = new CellProcessor[3];
+		} else {
+			processors = new CellProcessor[3 + extraColumnProcessor
+					.getNumberOfExtraColumns()];
+		}
+		for (int i = 0; i < processors.length; i++) {
+			processors[i] = new NotNull();
+		}
 		return processors;
 	}
 
@@ -237,23 +255,45 @@ public class AgentBasedSimulation {
 	 * 
 	 * @return
 	 */
-	private String[] buildHeader() {
+	private String[] buildHeader(ExtraColumnsProcessor extraColumnProcessor) {
 		// build the header
-		final String[] header = { "timeStep", "totalPayoff", "population" };
-		return header;
+		if (extraColumnProcessor == null) {
+			final String[] header = { "timeStep", "totalPayoff", "population" };
+			return header;
+		} else {
+			String header[] = new String[3 + extraColumnProcessor
+					.getNumberOfExtraColumns()];
+			String extras[] = extraColumnProcessor.getColumnHeaders();
+
+			header[0] = "timeStep";
+			header[1] = "totalPayoff";
+			header[2] = "population";
+			for (int i = 3; i < header.length; i++) {
+				header[i] = extras[i - 3];
+			}
+			return header;
+		}
+
 	}
 
 	/**
 	 * Turns the current population into a list to be written in the csv file
 	 * 
 	 * @param process
+	 * @param extraColumnProcessor 
 	 * @return
 	 */
-	private List<Object> currentStateRow(AgentBasedEvolutionaryProcess process) {
+	private List<Object> currentStateRow(AgentBasedEvolutionaryProcess process, ExtraColumnsProcessor extraColumnProcessor) {
 		ArrayList<Object> ans = new ArrayList<Object>();
 		ans.add(process.getTimeStep());
 		ans.add(process.getTotalPopulationPayoff());
 		ans.add(process.getPopulation().toString());
+		if (extraColumnProcessor != null) {
+			Object[] extras = extraColumnProcessor.compute(process.getPopulation());
+			for (int i = 0; i < extras.length; i++) {
+				ans.add(extras[i]);
+			}
+		}
 		return ans;
 	}
 

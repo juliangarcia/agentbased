@@ -24,6 +24,9 @@ public class AgentBasedPopulationImpl implements AgentBasedPopulation {
 
 	private double[] payoffsArray;
 	private int size;
+	
+	//Holder for other info in the run that may be needed
+	private Object extraInfo;
 
 	public AgentBasedPopulationImpl(Agent[] agentArray) {
 		super();
@@ -92,6 +95,14 @@ public class AgentBasedPopulationImpl implements AgentBasedPopulation {
 					+ Arrays.toString(agentArray) + ", payoffs="
 					+ Arrays.toString(payoffsArray) + "]";
 		return frequenciesToString();
+	}
+
+	public Object getExtraInfo() {
+		return extraInfo;
+	}
+
+	public void setExtraInfo(Object extraInfo) {
+		this.extraInfo = extraInfo;
 	}
 
 }
