@@ -9,7 +9,7 @@ package com.evolutionandgames.agentbased;
  * 
  */
 public interface ExtraColumnsProcessor {
-
+ 
 	public int getNumberOfExtraColumns();
 
 	public String[] getColumnHeaders();
