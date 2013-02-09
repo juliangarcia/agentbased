@@ -78,5 +78,11 @@ public interface AgentBasedPopulation {
 	 */
 	public Agent[] getAsArrayOfAgents();
 	
+	/**
+	 * Additional method to return any extra info that may be required.
+	 * @return
+	 */
+	public Object getExtraInfo();
+	
 	
 }
