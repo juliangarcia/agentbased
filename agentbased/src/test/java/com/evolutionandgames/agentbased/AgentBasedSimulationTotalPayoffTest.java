@@ -46,9 +46,9 @@ public class AgentBasedSimulationTotalPayoffTest {
 				PayoffToFitnessMapping.EXPONENTIAL, intensityOfSelection, mutator, r);
 		AgentBasedSimulation simulation = new AgentBasedSimulation(wf);
 		int burningTimePerEstimate = 100;
-		int samplesPerEstimate = 500000;
+		int samplesPerEstimate = 500;
 		int numberOfEstimates = 10;
-		int reportEveryTimeSteps = 5;
+		int reportEveryTimeSteps = 10;
 		double totalPayoff = simulation.estimateTotalPayoff(burningTimePerEstimate, samplesPerEstimate, numberOfEstimates, reportEveryTimeSteps, seed, factory); 
 		double expectedPayoff = (gameMatrix.getEntry(0, 0)*0.5 + gameMatrix.getEntry(1, 1)*0.5)*populationSize; 
 		//System.out.println(totalPayoff);

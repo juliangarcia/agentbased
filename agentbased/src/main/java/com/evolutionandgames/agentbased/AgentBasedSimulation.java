@@ -174,6 +174,7 @@ public class AgentBasedSimulation {
 
 	/**
 	 * Simulates evolution writing the ouput to a file.
+	 * 
 	 * @param numberOfTimeSteps
 	 * @param reportEveryTimeSteps
 	 * @param seed
@@ -194,14 +195,18 @@ public class AgentBasedSimulation {
 			// write the header
 			listWriter.writeHeader(header);
 			// write the initial zero step content
-			listWriter.write(this.currentStateRow(process, extraColumnProcessor), processors);
+			listWriter.write(
+					this.currentStateRow(process, extraColumnProcessor),
+					processors);
 			// repeat for as many steps as requested
 			for (int i = 0; i < numberOfTimeSteps; i++) {
 				// step
 				process.step();
 				// if time to repor, report
 				if (process.getTimeStep() % reportEveryTimeSteps == 0) {
-					listWriter.write(this.currentStateRow(process, extraColumnProcessor), processors);
+					listWriter
+							.write(this.currentStateRow(process,
+									extraColumnProcessor), processors);
 				}
 			}
 		} finally {
@@ -212,6 +217,7 @@ public class AgentBasedSimulation {
 		}
 
 	}
+
 	/**
 	 * 
 	 * @param numberOfTimeSteps
@@ -221,11 +227,11 @@ public class AgentBasedSimulation {
 	 * @throws IOException
 	 */
 	public void simulateTimeSeries(int numberOfTimeSteps,
-			int reportEveryTimeSteps, Long seed, String fileName) throws IOException {
-		simulateTimeSeries(numberOfTimeSteps, reportEveryTimeSteps, seed, fileName, null);
+			int reportEveryTimeSteps, Long seed, String fileName)
+			throws IOException {
+		simulateTimeSeries(numberOfTimeSteps, reportEveryTimeSteps, seed,
+				fileName, null);
 	}
-	
-	
 
 	/**
 	 * Helper method to write the csv file
@@ -279,16 +285,18 @@ public class AgentBasedSimulation {
 	 * Turns the current population into a list to be written in the csv file
 	 * 
 	 * @param process
-	 * @param extraColumnProcessor 
+	 * @param extraColumnProcessor
 	 * @return
 	 */
-	private List<Object> currentStateRow(AgentBasedEvolutionaryProcess process, ExtraColumnsProcessor extraColumnProcessor) {
+	private List<Object> currentStateRow(AgentBasedEvolutionaryProcess process,
+			ExtraColumnsProcessor extraColumnProcessor) {
 		ArrayList<Object> ans = new ArrayList<Object>();
 		ans.add(process.getTimeStep());
 		ans.add(process.getTotalPopulationPayoff());
 		ans.add(process.getPopulation().toString());
 		if (extraColumnProcessor != null) {
-			Object[] extras = extraColumnProcessor.compute(process.getPopulation());
+			Object[] extras = extraColumnProcessor.compute(process
+					.getPopulation());
 			for (int i = 0; i < extras.length; i++) {
 				ans.add(extras[i]);
 			}
@@ -302,7 +310,7 @@ public class AgentBasedSimulation {
 	 * the population payoff
 	 * 
 	 * @param burningTimePerEstimate
-	 * @param timeStepsPerEstimate
+	 * @param samplesPerEstimate
 	 * @param numberOfEstimates
 	 * @param reportEveryTimeSteps
 	 * @param seed
@@ -310,7 +318,7 @@ public class AgentBasedSimulation {
 	 * @return double
 	 */
 	public double estimateTotalPayoff(int burningTimePerEstimate,
-			int timeStepsPerEstimate, int numberOfEstimates,
+			int samplesPerEstimate, int numberOfEstimates,
 			int reportEveryTimeSteps, Long seed,
 			AgentBasedPopulationFactory factory) {
 		Random.seed(seed);
@@ -321,15 +329,17 @@ public class AgentBasedSimulation {
 			for (int burningStep = 0; burningStep < burningTimePerEstimate; burningStep++) {
 				process.step();
 			}
-			for (int sample = 0; sample < timeStepsPerEstimate; sample++) {
+			long sample = 0;
+			while (sample < samplesPerEstimate) {
 				// sample every time?
 				process.step();
-				if (sample % reportEveryTimeSteps == 0) {
+				if (process.getTimeStep() % reportEveryTimeSteps == 0) {
 					payoffSum = payoffSum + process.getTotalPopulationPayoff();
 					totalNumberOfSamples++;
+					sample++;
 				}
-
 			}
+
 		}
 		return payoffSum / totalNumberOfSamples;
 	}
