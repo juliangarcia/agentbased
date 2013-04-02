@@ -1,14 +1,14 @@
 package com.evolutionandgames.agentbased.simple;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 
 
 
 /***
- * AgentBasedPopulation factory, creates a simple population with given copies of the same Agent
+ * ExtensivePopulation factory, creates a simple population with given copies of the same Agent
  * @author garcia
  *
  */
@@ -20,7 +20,7 @@ public class AgentBasedSimplePopulationFactory implements
 	
 	
 
-	public AgentBasedPopulation createPopulation() {
+	public ExtensivePopulation createPopulation() {
 		Agent[] agentArray = new AgentSimple[this.populationSize];
 		for (int i = 0; i < agentArray.length; i++) {
 			agentArray[i] = this.sampleAgent;

@@ -3,7 +3,7 @@ package com.evolutionandgames.agentbased.simple;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.simple.AgentBasedSimplePopulationFactory;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.Random;
@@ -22,7 +22,7 @@ public class AgentBasedSimplePopulationFactoryTest {
 			AgentSimple simple = new AgentSimple(Random.nextInt(10));
 			AgentBasedSimplePopulationFactory factory = new AgentBasedSimplePopulationFactory(
 					populationSize, simple);
-			AgentBasedPopulation pop = factory.createPopulation();
+			ExtensivePopulation pop = factory.createPopulation();
 			Assert.assertEquals(populationSize, pop.getSize());
 			Assert.assertEquals(1, pop.getSetOfAgents().size());
 			Assert.assertTrue(pop.getSetOfAgents().contains(simple));

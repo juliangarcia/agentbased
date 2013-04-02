@@ -2,22 +2,7 @@ package com.evolutionandgames.agentbased;
 
 import java.util.Set;
 
-/**
- * Interface for a population in an agent-based process. 
- * @author garcia
- *
- */
 public interface AgentBasedPopulation {
-	
-	/**
-	 * Adds a new individual. Since the population size is fixed, an index has to be given of the indidividual to be replaced.
-	 * Index runs from 0 to population size minus one. 
-	 * @param agent individual to add
-	 * @param position index of the individual to replace
-	 */
-	public void addOneIndividual(Agent agent, int position);
-	
-	
 	
 	/**
 	 * How many copies of a given agent. Couting relies on the equals() method of the agent implementation.
@@ -42,30 +27,6 @@ public interface AgentBasedPopulation {
 	
 	
 	/**
-	 * Get the agent in a given position.
-	 * @param index
-	 * @return Agent
-	 */
-	public Agent getAgent(int index);
-	
-	
-	/**
-	 * Get the payoff of a certain agent.
-	 * @param index
-	 * @return double
-	 */
-	public double getPayoffOfAgent(int index);
-	
-	
-	/**
-	 * Set the payoff of an agent in a certain position. 
-	 * @param index
-	 * @param payoff
-	 */
-	public void setPayoffOfAgent(int index, double payoff);
-	
-	
-	/**
 	 * Gives a String representation of the population
 	 * @return String
 	 */
@@ -73,16 +34,10 @@ public interface AgentBasedPopulation {
 	
 	
 	/**
-	 * Returns the array of agents composing the population
-	 * @return an array of Agent
-	 */
-	public Agent[] getAsArrayOfAgents();
-	
-	/**
 	 * Additional method to return any extra info that may be required.
 	 * @return
 	 */
 	public Object getExtraInfo();
 	
-	
+
 }

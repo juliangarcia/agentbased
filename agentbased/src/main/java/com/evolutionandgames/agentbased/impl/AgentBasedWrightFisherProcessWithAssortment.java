@@ -3,7 +3,7 @@ package com.evolutionandgames.agentbased.impl;
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedEvolutionaryProcess;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.PayoffToFitnessMapping;
@@ -15,7 +15,7 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 
 	public static boolean KEEP_TRACK_OF_TOTAL_PAYOFF = true;
 	private int timeStep;
-	private AgentBasedPopulation population;
+	private ExtensivePopulation population;
 	private double totalPopulationPayoff;
 	private AgentBasedPayoffCalculator payoffCalculator;
 	private PayoffToFitnessMapping mapping;
@@ -112,11 +112,11 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 		return fitness;
 	}
 
-	public AgentBasedPopulation getPopulation() {
+	public ExtensivePopulation getPopulation() {
 		return this.population;
 	}
 
-	public void reset(AgentBasedPopulation startingPopulation) {
+	public void reset(ExtensivePopulation startingPopulation) {
 		this.timeStep = 0;
 		this.population = startingPopulation;
 	}
@@ -130,7 +130,7 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 	}
 
 	public AgentBasedWrightFisherProcessWithAssortment(
-			AgentBasedPopulation population,
+			ExtensivePopulation population,
 			AgentBasedPayoffCalculator payoffCalculator,
 			PayoffToFitnessMapping mapping, double intensityOfSelection,
 			AgentMutator mutator, double r) {

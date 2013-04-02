@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
@@ -20,13 +20,13 @@ public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopula
 	private Map<Integer, AgentSimple> cache = new HashMap<Integer, AgentSimple>();  
 	
 
-	public AgentBasedPopulation createPopulation() {
+	public ExtensivePopulation createPopulation() {
 		if(edge) return createEdgePopulation();
 		return createRandomPopulation();
 	}
 
 
-	private AgentBasedPopulation createRandomPopulation() {
+	private ExtensivePopulation createRandomPopulation() {
 		Agent[] array = new Agent[populationSize];
 		for (int i = 0; i < array.length; i++) {
 			int strategy = Random.nextInt(this.numberOfTypes);
@@ -48,7 +48,7 @@ public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopula
 	}
 
 
-	private AgentBasedPopulation createEdgePopulation() {
+	private ExtensivePopulation createEdgePopulation() {
 		int[] array = ArrayUtils.randomEdge(numberOfTypes, populationSize);
 		ArrayList<Agent> list = new ArrayList<Agent>();
 		for (int i = 0; i < array.length; i++) {

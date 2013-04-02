@@ -8,5 +8,5 @@ package com.evolutionandgames.agentbased;
  */
 public interface AgentBasedPayoffCalculator {
 	
-	void calculatePayoffs(AgentBasedPopulation population);
+	void calculatePayoffs(ExtensivePopulation population);
 }

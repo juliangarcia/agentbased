@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Multisets;
 
 
-public class AgentBasedPopulationImpl implements AgentBasedPopulation {
+public class AgentBasedPopulationImpl implements ExtensivePopulation {
 
 	public static final boolean EXTENSIVE_TO_STRING = false;
 	private Agent[] agentArray;

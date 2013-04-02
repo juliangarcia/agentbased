@@ -14,6 +14,6 @@ public interface ExtraColumnsProcessor {
 
 	public String[] getColumnHeaders();
 
-	public Object[] compute(AgentBasedPopulation population);
+	public Object[] compute(ExtensivePopulation population);
 
 }

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortment;
@@ -23,7 +23,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 
 	private class EveryBodyGetsOnePayoffCalculator implements
 			AgentBasedPayoffCalculator {
-		public void calculatePayoffs(AgentBasedPopulation population) {
+		public void calculatePayoffs(ExtensivePopulation population) {
 			for (int i = 0; i < population.getSize(); i++) {
 				population.setPayoffOfAgent(i, 1.0);
 			}
@@ -176,7 +176,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 		private double fitnessOther = 0.0;
 		private AgentSimple advantageous;
 
-		public void calculatePayoffs(AgentBasedPopulation population) {
+		public void calculatePayoffs(ExtensivePopulation population) {
 			for (int i = 0; i < population.getSize(); i++) {
 				if (population.getAgent(i).equals(advantageous)) {
 					population.setPayoffOfAgent(i, fitnessAdv);
@@ -302,7 +302,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 		for (int repetitions = 0; repetitions < 1; repetitions++) {
 			int populationSize = 100000;
 			// everybody is a random type
-			AgentBasedPopulation population = new AgentBasedSimpleRandomPopulationFactory(2, populationSize).createPopulation();
+			ExtensivePopulation population = new AgentBasedSimpleRandomPopulationFactory(2, populationSize).createPopulation();
 			AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(Games.prionersDilemma(2.0, 0.0, 3.0, 1.0));
 			// and mutator
 			AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernelWithSelfMutation(mutationProbablity,numberOfTypes));

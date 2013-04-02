@@ -21,16 +21,16 @@ public interface AgentBasedEvolutionaryProcess {
 	
 	/**
 	 * Returns the population on which this process operates. 
-	 * @return AgentBasedPopulation
+	 * @return ExtensivePopulation
 	 */
-	public AgentBasedPopulation getPopulation();
+	public ExtensivePopulation getPopulation();
 	
 	
 	/**
 	 * Restart the population of the process, and set the timeStep to 0. 
 	 * @param startingPopulation
 	 */
-	public void reset(AgentBasedPopulation startingPopulation);
+	public void reset(ExtensivePopulation startingPopulation);
 	
 	
 	/**

@@ -8,6 +8,6 @@ package com.evolutionandgames.agentbased;
  */
 public interface AgentBasedPopulationFactory {
 	
-	AgentBasedPopulation createPopulation();
+	ExtensivePopulation createPopulation();
 
 }
