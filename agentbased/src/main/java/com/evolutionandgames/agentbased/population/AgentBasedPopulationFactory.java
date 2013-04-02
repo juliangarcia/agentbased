@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased;
+package com.evolutionandgames.agentbased.population;
 
 /**
  * This class defines a method to create populations. It is used in simulations, where different estimates typically depart from

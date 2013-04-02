@@ -1,5 +1,7 @@
 package com.evolutionandgames.agentbased;
 
+import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
+
 /**
  * Interface for agent based evolutionary processes. 
  * @author garcia
@@ -23,14 +25,14 @@ public interface AgentBasedEvolutionaryProcess {
 	 * Returns the population on which this process operates. 
 	 * @return ExtensivePopulation
 	 */
-	public ExtensivePopulation getPopulation();
+	public AgentBasedPopulation getPopulation();
 	
 	
 	/**
 	 * Restart the population of the process, and set the timeStep to 0. 
 	 * @param startingPopulation
 	 */
-	public void reset(ExtensivePopulation startingPopulation);
+	public void reset(AgentBasedPopulation startingPopulation);
 	
 	
 	/**

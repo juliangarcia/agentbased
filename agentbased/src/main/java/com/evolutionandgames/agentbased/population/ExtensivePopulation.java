@@ -1,4 +1,6 @@
-package com.evolutionandgames.agentbased;
+package com.evolutionandgames.agentbased.population;
+
+import com.evolutionandgames.agentbased.Agent;
 
 
 /**

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.ExtensivePopulation;
-import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.Random;
 

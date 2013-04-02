@@ -14,6 +14,7 @@ import org.supercsv.io.ICsvListWriter;
 import org.supercsv.prefs.CsvPreference;
 
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
 import com.evolutionandgames.jevodyn.utils.Random;
 import com.google.common.util.concurrent.AtomicLongMap;
 

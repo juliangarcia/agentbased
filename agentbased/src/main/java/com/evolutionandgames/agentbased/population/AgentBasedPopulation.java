@@ -1,6 +1,8 @@
-package com.evolutionandgames.agentbased;
+package com.evolutionandgames.agentbased.population;
 
 import java.util.Set;
+
+import com.evolutionandgames.agentbased.Agent;
 
 public interface AgentBasedPopulation {
 	

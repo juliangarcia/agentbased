@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.ExtensivePopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortment;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.agentbased.simple.AgentBasedSimpleRandomPopulationFactory;
 import com.evolutionandgames.agentbased.simple.AgentMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;

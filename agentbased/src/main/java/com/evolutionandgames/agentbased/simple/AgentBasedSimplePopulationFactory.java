@@ -1,9 +1,9 @@
 package com.evolutionandgames.agentbased.simple;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.ExtensivePopulation;
-import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 
 
 

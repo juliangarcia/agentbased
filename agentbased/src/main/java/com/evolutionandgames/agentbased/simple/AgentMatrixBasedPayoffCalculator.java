@@ -3,7 +3,7 @@ package com.evolutionandgames.agentbased.simple;
 import org.apache.commons.math3.linear.RealMatrix;
 
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.ExtensivePopulation;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 
 
 public class AgentMatrixBasedPayoffCalculator implements

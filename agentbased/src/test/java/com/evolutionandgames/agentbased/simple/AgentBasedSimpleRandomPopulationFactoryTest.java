@@ -3,7 +3,7 @@ package com.evolutionandgames.agentbased.simple;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.evolutionandgames.agentbased.ExtensivePopulation;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.agentbased.simple.AgentBasedSimpleRandomPopulationFactory;
 import com.evolutionandgames.jevodyn.utils.Random;
 
