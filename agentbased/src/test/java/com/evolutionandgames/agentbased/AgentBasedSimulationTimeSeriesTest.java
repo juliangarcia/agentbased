@@ -21,8 +21,8 @@ public class AgentBasedSimulationTimeSeriesTest {
 //		Mutator mutator = new KernelBasedSimpleMutator(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
 //		AgentBasedPayoffCalculator payoffCalculator = new MatrixBasedSimpleAgentPayoffCalculator(gameMatrix);
 //		AgentBasedPopulationFactory factory = new SimplePopulationFactory(numberOfTypes, populationSize);
-//		Agent[] agentArray = ((AgentBasedPopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
-//		AgentBasedFixedSizePopulation population = new  AgentBasedPopulationImpl(agentArray);
+//		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
+//		AgentBasedFixedSizePopulation population = new  ExtensivePopulationImpl(agentArray);
 //		AgentBasedEvolutionaryProcess wf = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, PayoffToFitnessMapping.LINEAR, intensityOfSelection, mutator, r);
 //		AgentBasedSimulation simulation = new AgentBasedSimulation(wf);
 //		String fileName = "pepita.txt";

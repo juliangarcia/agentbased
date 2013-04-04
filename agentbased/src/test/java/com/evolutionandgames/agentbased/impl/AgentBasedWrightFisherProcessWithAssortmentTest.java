@@ -6,8 +6,9 @@ import org.junit.Test;
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortment;
+import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.agentbased.simple.AgentBasedSimpleRandomPopulationFactory;
 import com.evolutionandgames.agentbased.simple.AgentMatrixBasedPayoffCalculator;
@@ -23,9 +24,9 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 
 	private class EveryBodyGetsOnePayoffCalculator implements
 			AgentBasedPayoffCalculator {
-		public void calculatePayoffs(ExtensivePopulation population) {
+		public void calculatePayoffs(AgentBasedPopulation population) {
 			for (int i = 0; i < population.getSize(); i++) {
-				population.setPayoffOfAgent(i, 1.0);
+				((ExtensivePopulationImpl) population).setPayoffOfAgent(i, 1.0);
 			}
 		}
 	}
@@ -57,7 +58,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 			for (int i = 0; i < agentArray.length; i++) {
 				agentArray[i] = agent1;
 			}
-			AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
 			// now fitness calculator
 			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
@@ -101,7 +102,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 			for (int i = 0; i < agentArray.length; i++) {
 				agentArray[i] = agent1;
 			}
-			AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
 			// now fitness calculator
 			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
@@ -147,7 +148,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 					type = 1;
 				agentArray[i] = new AgentSimple(type);
 			}
-			AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
 			// now fitness calculator
 			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
@@ -176,12 +177,12 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 		private double fitnessOther = 0.0;
 		private AgentSimple advantageous;
 
-		public void calculatePayoffs(ExtensivePopulation population) {
+		public void calculatePayoffs(AgentBasedPopulation population) {
 			for (int i = 0; i < population.getSize(); i++) {
-				if (population.getAgent(i).equals(advantageous)) {
-					population.setPayoffOfAgent(i, fitnessAdv);
+				if (((ExtensivePopulationImpl) population).getAgent(i).equals(advantageous)) {
+					((ExtensivePopulationImpl) population).setPayoffOfAgent(i, fitnessAdv);
 				} else {
-					population.setPayoffOfAgent(i, fitnessOther);
+					((ExtensivePopulationImpl) population).setPayoffOfAgent(i, fitnessOther);
 				}
 			}
 		}
@@ -214,7 +215,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 				int type = Random.nextInt(numberOfTypes);
 				agentArray[i] = new AgentSimple(type);
 			}
-			AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
 			// now fitness calculator
 			int advantageousType = Random.nextInt(numberOfTypes);
@@ -264,7 +265,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 				int type = Random.nextInt(numberOfTypes);
 				agentArray[i] = new AgentSimple(type);
 			}
-			AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
 			AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(
 					Games.hawkDoveGame());

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
@@ -32,7 +32,7 @@ public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopula
 			int strategy = Random.nextInt(this.numberOfTypes);
 			array[i] = getAgent(strategy);
 		}
-		return new AgentBasedPopulationImpl(array);
+		return new ExtensivePopulationImpl(array);
 	}
 
 
@@ -57,7 +57,7 @@ public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopula
 			}
 		}
 		Agent[] arrayAgent = list.toArray(new AgentSimple[]{});
-		return new AgentBasedPopulationImpl(arrayAgent);
+		return new ExtensivePopulationImpl(arrayAgent);
 	}
 
 

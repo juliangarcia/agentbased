@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 
@@ -19,7 +19,7 @@ public class AgentBasedPopulationImplTest {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = new AgentSimple(primitiveArray[i]);
 		}
-		AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+		ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 				array);
 		// done
 
@@ -91,7 +91,7 @@ public class AgentBasedPopulationImplTest {
 		for (int i = 0; i < array.length; i++) {
 			array[i] = new AgentSimple(primitiveArray[i]);
 		}
-		AgentBasedPopulationImpl population = new AgentBasedPopulationImpl(
+		ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 				array);
 		String string = population.toString();
 		Assert.assertEquals("Strategy : 1, Count : 3; Strategy : 0, Count : 2", string);

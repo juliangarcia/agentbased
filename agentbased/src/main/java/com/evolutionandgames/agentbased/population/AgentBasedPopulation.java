@@ -1,5 +1,6 @@
 package com.evolutionandgames.agentbased.population;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
@@ -40,6 +41,13 @@ public interface AgentBasedPopulation {
 	 * @return
 	 */
 	public Object getExtraInfo();
+	
+	
+	/**
+	 * Returns a view of the population as a dictionary. 
+	 * @return
+	 */
+	public HashMap<Agent, Integer> getDictionaryOfCopies();
 	
 
 }

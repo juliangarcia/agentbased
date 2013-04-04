@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,8 @@ import org.supercsv.io.CsvListWriter;
 import org.supercsv.io.ICsvListWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
 import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
+import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.Random;
 import com.google.common.util.concurrent.AtomicLongMap;
 
@@ -57,11 +58,8 @@ public class AgentBasedSimulation {
 		Random.seed(seed);
 		int populationSize = this.process.getPopulation().getSize();
 		int positives = 0;
-		Agent[] startingPopulationArray = getStartingArray(mutant, incumbent,
-				populationSize);
 		for (int i = 0; i < numberOfSamples; i++) {
-			this.process.reset(new AgentBasedPopulationImpl(
-					startingPopulationArray));
+			this.process.reset(this.process.oneMutantPopulation(populationSize, mutant, incumbent));
 			boolean fixated = false;
 			// step until fixation is reached
 			while (!fixated) {
@@ -69,29 +67,15 @@ public class AgentBasedSimulation {
 				fixated = this.process.getPopulation().getSetOfAgents().size() == 1;
 			}
 			// increase positives if it fixated to the mutant type
-			if (this.process.getPopulation().getAgent(0).equals(mutant))
+			if (((ExtensivePopulation) this.process.getPopulation()).getAgent(0).equals(mutant))
 				positives++;
 		}
 		return ((double) positives) / numberOfSamples;
 	}
+	
+	
 
-	/**
-	 * Help method, to initialize fixation calculations
-	 * 
-	 * @param mutant
-	 * @param incumbent
-	 * @param populationSize
-	 * @return an array of Agent.
-	 */
-	private Agent[] getStartingArray(Agent mutant, Agent incumbent,
-			int populationSize) {
-		Agent[] ans = new Agent[populationSize];
-		ans[0] = mutant;
-		for (int i = 1; i < ans.length; i++) {
-			ans[i] = incumbent;
-		}
-		return ans;
-	}
+	
 
 	private AtomicLongMap<Agent> sampleAndCount(int reportEveryTimeSteps,
 			int numberOfEstimates, int burningTimePerEstimate,
@@ -113,10 +97,12 @@ public class AgentBasedSimulation {
 			while (sample < samplesPerEstimate) {
 				process.step();
 				if (process.getTimeStep() % reportEveryTimeSteps == 0) {
-					for (int i = 0; i < this.process.getPopulation().getSize(); i++) {
-						map.incrementAndGet(this.process.getPopulation()
-								.getAgent(i));
-						bagSize++;
+					HashMap<Agent, Integer> composition = this.process.getPopulation().getDictionaryOfCopies();
+					for (Iterator<Agent> iterator = composition.keySet().iterator(); iterator.hasNext();) {
+						Agent type = iterator.next();
+						int numberOfCopies = composition.get(type);
+						map.addAndGet(type, numberOfCopies);
+						bagSize = bagSize + numberOfCopies;
 					}
 					sample++;
 				}

@@ -1,7 +1,7 @@
 package com.evolutionandgames.agentbased.simple;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 
@@ -25,7 +25,7 @@ public class AgentBasedSimplePopulationFactory implements
 		for (int i = 0; i < agentArray.length; i++) {
 			agentArray[i] = this.sampleAgent;
 		}
-		return new AgentBasedPopulationImpl(agentArray);
+		return new ExtensivePopulationImpl(agentArray);
 	}
 
 

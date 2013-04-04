@@ -4,11 +4,11 @@ import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedEvolutionaryProcess;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentMutator;
+import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.PayoffToFitnessMapping;
 import com.evolutionandgames.jevodyn.utils.Random;
-
 
 public class AgentBasedWrightFisherProcessWithAssortment implements
 		AgentBasedEvolutionaryProcess {
@@ -50,27 +50,31 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 	}
 
 	private void applyMutation() {
-		//everybody gets mutated, the probability of this happening is responsibility of the mutator implementation
+		// everybody gets mutated, the probability of this happening is
+		// responsibility of the mutator implementation
 		for (int i = 0; i < population.getSize(); i++) {
-				Agent thisAgent = this.population.getAgent(i);
-				population.addOneIndividual(this.mutator.mutate(thisAgent), i);
+			Agent thisAgent = this.population.getAgent(i);
+			population.addOneIndividual(this.mutator.mutate(thisAgent), i);
 		}
 
 	}
 
 	private void createNewGeneration(double[] fitness) {
-		Agent[] copyOfCurrentState = this.population.getAsArrayOfAgents().clone();
+		Agent[] copyOfCurrentState = this.population.getAsArrayOfAgents()
+				.clone();
 		for (int i = 0; i < population.getSize(); i++) {
 			if (isEven(i)) {
 				// if the position is even, we sample the fitness distribution
 				// to determine how we occupy it
-				Agent fitAgent = copyOfCurrentState[Random.simulateDiscreteDistribution(fitness)];
+				Agent fitAgent = copyOfCurrentState[Random
+						.simulateDiscreteDistribution(fitness)];
 				population.addOneIndividual(fitAgent, i);
 			} else {
 				// if the position is odd, we sample...
 				// from the distribution with probability 1-r
 				if (Random.bernoulliTrial(1.0 - this.r)) {
-					Agent fitAgent = copyOfCurrentState[Random.simulateDiscreteDistribution(fitness)];
+					Agent fitAgent = copyOfCurrentState[Random
+							.simulateDiscreteDistribution(fitness)];
 					population.addOneIndividual(fitAgent, i);
 				} else {
 					// from parent of the neightbor with probability r
@@ -92,9 +96,12 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 		case LINEAR:
 			for (int i = 0; i < fitness.length; i++) {
 				double payoffAgent = population.getPayoffOfAgent(i);
-				fitness[i] = 1.0 - intensityOfSelection + intensityOfSelection* payoffAgent;
-				if (fitness[i] < 0.0) throw new IllegalArgumentException("Negative fitness!");
-				this.totalPopulationPayoff = this.totalPopulationPayoff + payoffAgent;
+				fitness[i] = 1.0 - intensityOfSelection + intensityOfSelection
+						* payoffAgent;
+				if (fitness[i] < 0.0)
+					throw new IllegalArgumentException("Negative fitness!");
+				this.totalPopulationPayoff = this.totalPopulationPayoff
+						+ payoffAgent;
 			}
 			break;
 		case EXPONENTIAL:
@@ -116,9 +123,9 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 		return this.population;
 	}
 
-	public void reset(ExtensivePopulation startingPopulation) {
+	public void reset(AgentBasedPopulation startingPopulation) {
 		this.timeStep = 0;
-		this.population = startingPopulation;
+		this.population = (ExtensivePopulation) startingPopulation;
 	}
 
 	public double getTotalPopulationPayoff() {
@@ -136,14 +143,26 @@ public class AgentBasedWrightFisherProcessWithAssortment implements
 			AgentMutator mutator, double r) {
 		super();
 		this.timeStep = 0;
-		this.totalPopulationPayoff=0.0;
+		this.totalPopulationPayoff = 0.0;
 		this.population = population;
 		this.payoffCalculator = payoffCalculator;
 		this.mapping = mapping;
 		this.intensityOfSelection = intensityOfSelection;
 		this.mutator = mutator;
 		this.r = r;
-		if (population.getSize()%2 !=0) throw new IllegalArgumentException("This class asumes that the population size is even");
+		if (population.getSize() % 2 != 0)
+			throw new IllegalArgumentException(
+					"This class asumes that the population size is even");
+	}
+
+	public AgentBasedPopulation oneMutantPopulation(int size, Agent mutant,
+			Agent incumbent) {
+		Agent[] ans = new Agent[size];
+		ans[0] = mutant;
+		for (int i = 1; i < ans.length; i++) {
+			ans[i] = incumbent;
+		}
+		return new ExtensivePopulationImpl(ans);
 	}
 
 }

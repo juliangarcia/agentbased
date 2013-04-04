@@ -48,4 +48,13 @@ public interface AgentBasedEvolutionaryProcess {
 	 */
 	public int getTimeStep();
 	
+	/**
+	 * Provides a population for fixation computations
+	 * @param size
+	 * @param mutant
+	 * @param incumbent
+	 * @return
+	 */
+	public AgentBasedPopulation oneMutantPopulation(int size, Agent mutant, Agent incumbent);
+	
 }

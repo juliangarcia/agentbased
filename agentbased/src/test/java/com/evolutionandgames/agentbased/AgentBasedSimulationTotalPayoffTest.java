@@ -9,7 +9,7 @@ import com.evolutionandgames.agentbased.AgentBasedEvolutionaryProcess;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedSimulation;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImpl;
+import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortment;
 import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
 import com.evolutionandgames.agentbased.population.ExtensivePopulation;
@@ -40,8 +40,8 @@ public class AgentBasedSimulationTotalPayoffTest {
 		AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
 		AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(gameMatrix);
 		AgentBasedPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(numberOfTypes, populationSize);
-		Agent[] agentArray = ((AgentBasedPopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
-		ExtensivePopulation population = new  AgentBasedPopulationImpl(agentArray);
+		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
+		ExtensivePopulation population = new  ExtensivePopulationImpl(agentArray);
 		AgentBasedEvolutionaryProcess wf = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, 
 				PayoffToFitnessMapping.EXPONENTIAL, intensityOfSelection, mutator, r);
 		AgentBasedSimulation simulation = new AgentBasedSimulation(wf);

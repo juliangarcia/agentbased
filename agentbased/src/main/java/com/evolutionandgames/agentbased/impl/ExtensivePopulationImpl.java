@@ -2,6 +2,7 @@ package com.evolutionandgames.agentbased.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -14,21 +15,20 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Multisets;
 
-
-public class AgentBasedPopulationImpl implements ExtensivePopulation {
+public class ExtensivePopulationImpl implements ExtensivePopulation {
 
 	public static final boolean EXTENSIVE_TO_STRING = false;
 	private Agent[] agentArray;
-	
+
 	public static String FORMAT = "Strategy : %s, Count : %d";
 
 	private double[] payoffsArray;
 	private int size;
-	
-	//Holder for other info in the run that may be needed
+
+	// Holder for other info in the run that may be needed
 	private Object extraInfo;
 
-	public AgentBasedPopulationImpl(Agent[] agentArray) {
+	public ExtensivePopulationImpl(Agent[] agentArray) {
 		super();
 		this.size = agentArray.length;
 		this.agentArray = agentArray.clone();
@@ -81,8 +81,10 @@ public class AgentBasedPopulationImpl implements ExtensivePopulation {
 		for (Iterator<Agent> iterator = multiset.elementSet().iterator(); iterator
 				.hasNext();) {
 			Agent agent = (Agent) iterator.next();
-			//stringView.add("Strategy : " + agent.toString() + ", Count : "+ multiset.count(agent));
-			stringView.add(String.format(FORMAT, agent.toString(), multiset.count(agent)));
+			// stringView.add("Strategy : " + agent.toString() + ", Count : "+
+			// multiset.count(agent));
+			stringView.add(String.format(FORMAT, agent.toString(),
+					multiset.count(agent)));
 		}
 		Joiner joiner = Joiner.on("; ").skipNulls();
 		return joiner.join(stringView);
@@ -91,9 +93,8 @@ public class AgentBasedPopulationImpl implements ExtensivePopulation {
 	@Override
 	public String toString() {
 		if (EXTENSIVE_TO_STRING)
-			return "Population [agents="
-					+ Arrays.toString(agentArray) + ", payoffs="
-					+ Arrays.toString(payoffsArray) + "]";
+			return "Population [agents=" + Arrays.toString(agentArray)
+					+ ", payoffs=" + Arrays.toString(payoffsArray) + "]";
 		return frequenciesToString();
 	}
 
@@ -103,6 +104,18 @@ public class AgentBasedPopulationImpl implements ExtensivePopulation {
 
 	public void setExtraInfo(Object extraInfo) {
 		this.extraInfo = extraInfo;
+	}
+
+	public HashMap<Agent, Integer> getDictionaryOfCopies() {
+		HashMap<Agent, Integer> ans = new HashMap<Agent, Integer>();
+		for (int i = 0; i < this.agentArray.length; i++) {
+			if (!ans.containsKey(this.agentArray[i])) {
+				ans.put(agentArray[i], 1);
+			} else {
+				ans.put(agentArray[i], ans.get(agentArray[i]) + 1);
+			}
+		}
+		return ans;
 	}
 
 }
