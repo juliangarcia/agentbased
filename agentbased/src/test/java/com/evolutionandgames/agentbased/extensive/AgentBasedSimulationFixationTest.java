@@ -14,7 +14,7 @@ import com.evolutionandgames.agentbased.extensive.AgentBasedWrightFisherProcessW
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
-import com.evolutionandgames.agentbased.extensive.simple.AgentMatrixBasedPayoffCalculator;
+import com.evolutionandgames.agentbased.extensive.simple.ExtensivePopulationMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
@@ -38,7 +38,7 @@ public class AgentBasedSimulationFixationTest {
 		RealMatrix gameMatrix = Games.prionersDilemma();
 		int populationSize = 10;
 		AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
-		AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(gameMatrix);
+		AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(gameMatrix);
 		AgentBasedPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(numberOfTypes, populationSize);
 		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
 		ExtensivePopulation population = new  ExtensivePopulationImpl(agentArray);

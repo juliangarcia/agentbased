@@ -8,13 +8,13 @@ import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 
-public class AgentMatrixBasedPayoffCalculator implements
+public class ExtensivePopulationMatrixBasedPayoffCalculator implements
 		AgentBasedPayoffCalculator {
 
 	private RealMatrix gameMatrix;
 	
 	
-	public AgentMatrixBasedPayoffCalculator(RealMatrix gameMatrix) {
+	public ExtensivePopulationMatrixBasedPayoffCalculator(RealMatrix gameMatrix) {
 		super();
 		this.gameMatrix = gameMatrix;
 	}

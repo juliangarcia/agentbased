@@ -8,7 +8,7 @@ import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
-import com.evolutionandgames.agentbased.extensive.simple.AgentMatrixBasedPayoffCalculator;
+import com.evolutionandgames.agentbased.extensive.simple.ExtensivePopulationMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
@@ -261,7 +261,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 			}
 			ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 					agentArray);
-			AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(
+			AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(
 					Games.hawkDoveGame());
 			// and mutator
 			AgentMutator mutator = new AgentMutatorSimpleKernel(
@@ -298,7 +298,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 			int populationSize = 100000;
 			// everybody is a random type
 			ExtensivePopulation population = new AgentBasedSimpleRandomPopulationFactory(2, populationSize).createPopulation();
-			AgentBasedPayoffCalculator payoffCalculator = new AgentMatrixBasedPayoffCalculator(Games.prionersDilemma(2.0, 0.0, 3.0, 1.0));
+			AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(Games.prionersDilemma(2.0, 0.0, 3.0, 1.0));
 			// and mutator
 			AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernelWithSelfMutation(mutationProbablity,numberOfTypes));
 			// the process itself

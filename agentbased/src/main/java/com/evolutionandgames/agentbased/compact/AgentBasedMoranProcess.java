@@ -18,7 +18,7 @@ import com.evolutionandgames.jevodyn.utils.Random;
 
 public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 	
-	private int timeStep;
+	private int timeStep = 0;
 	private CompactPopulation population;
 	private double totalPopulationPayoff;
 	private AgentBasedPayoffCalculator payoffCalculator;
@@ -38,7 +38,7 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 		for (int i = 0; i < frequencies.length; i++) {
 			frequencies[i]=  ((float) this.population.getDictionaryOfCopies().get(enumeration.get(i))) / populationSize;
 			payoffVector[i] = ((float) this.population.getPayoffOfAgent(enumeration.get(i)));
-			this.totalPopulationPayoff = this.totalPopulationPayoff + payoffVector[i]; 
+			this.totalPopulationPayoff = this.totalPopulationPayoff + populationSize*frequencies[i]*payoffVector[i]; 
 		}
 		double[] fitness= computeFitness(frequencies, payoffVector);
 		Agent chosenOne = enumeration.get(Random.simulateDiscreteDistribution(fitness));
@@ -133,6 +133,19 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 		composition.put(mutant, 1);
 		composition.put(incumbent, size-1);
 		return new CompactPopulationImpl(composition );
+	}
+
+
+	public AgentBasedMoranProcess(CompactPopulation population,
+			AgentBasedPayoffCalculator payoffCalculator,
+			PayoffToFitnessMapping mapping, double intensityOfSelection,
+			AgentMutator mutator) {
+		super();
+		this.population = population;
+		this.payoffCalculator = payoffCalculator;
+		this.mapping = mapping;
+		this.intensityOfSelection = intensityOfSelection;
+		this.mutator = mutator;
 	}
 
 }
