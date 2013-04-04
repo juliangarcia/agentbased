@@ -48,12 +48,25 @@ public class CompactPopulationImpl implements CompactPopulation {
 	}
 
 	public void incrementNumberofCopies(Agent agent) {
-		this.populationComposition.put(agent, this.populationComposition.get(agent)+1);
-
+		Integer numberOfCopies = this.populationComposition.get(agent);
+		if (numberOfCopies == null){
+			this.populationComposition.put(agent, 1);
+		}else if (numberOfCopies >=1 ) {
+			this.populationComposition.put(agent, numberOfCopies+1);
+		} else{
+			throw new IllegalArgumentException("Type with 0 copies");
+		}
 	}
-
+		
 	public void decrementNumberofCopies(Agent agent) {
-		this.populationComposition.put(agent, this.populationComposition.get(agent)-1);
+		Integer numberOfCopies = this.populationComposition.get(agent);
+		if (numberOfCopies > 1){
+			this.populationComposition.put(agent, numberOfCopies-1);
+		}else if (numberOfCopies ==1 ) {
+			this.populationComposition.remove(agent);
+		} else{
+			throw new IllegalArgumentException("Decrement a non-existing type");
+		}
 	}
 
 	public CompactPopulationImpl(HashMap<Agent, Integer> populationComposition) {

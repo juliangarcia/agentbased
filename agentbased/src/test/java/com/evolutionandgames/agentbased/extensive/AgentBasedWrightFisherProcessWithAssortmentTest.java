@@ -7,9 +7,6 @@ import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.extensive.AgentBasedWrightFisherProcessWithAssortment;
-import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
-import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
 import com.evolutionandgames.agentbased.extensive.simple.AgentMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
@@ -18,7 +15,6 @@ import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.Games;
 import com.evolutionandgames.jevodyn.utils.PayoffToFitnessMapping;
 import com.evolutionandgames.jevodyn.utils.Random;
-
 
 public class AgentBasedWrightFisherProcessWithAssortmentTest {
 
@@ -63,9 +59,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 			// now fitness calculator
 			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
 			// and mutator
-			AgentMutator mutator = new AgentMutatorSimpleKernel(
-					ArrayUtils.uniformMutationKernel(mutationProbablity,
-							numberOfTypes));
+			AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbablity, numberOfTypes));
 			// the process itself
 			AgentBasedWrightFisherProcessWithAssortment wf = new AgentBasedWrightFisherProcessWithAssortment(
 					population, payoffCalculator,
