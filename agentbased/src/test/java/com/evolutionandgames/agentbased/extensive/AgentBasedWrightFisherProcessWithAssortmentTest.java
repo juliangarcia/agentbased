@@ -1,17 +1,17 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased.extensive;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
+import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
-import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortment;
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
-import com.evolutionandgames.agentbased.simple.AgentBasedSimpleRandomPopulationFactory;
-import com.evolutionandgames.agentbased.simple.AgentMatrixBasedPayoffCalculator;
+import com.evolutionandgames.agentbased.extensive.AgentBasedWrightFisherProcessWithAssortment;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
+import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
+import com.evolutionandgames.agentbased.extensive.simple.AgentMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;

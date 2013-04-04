@@ -1,10 +1,11 @@
-package com.evolutionandgames.agentbased.simple;
+package com.evolutionandgames.agentbased.extensive.simple;
 
 import org.apache.commons.math3.linear.RealMatrix;
 
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
+import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
+import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 
 public class AgentMatrixBasedPayoffCalculator implements

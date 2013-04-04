@@ -5,11 +5,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.evolutionandgames.agentbased.impl.AgentBasedPopulationImplTest;
-import com.evolutionandgames.agentbased.impl.AgentBasedWrightFisherProcessWithAssortmentTest;
-import com.evolutionandgames.agentbased.impl.AgentMutatorSimpleKernelTest;
-import com.evolutionandgames.agentbased.simple.AgentBasedSimplePopulationFactoryTest;
-import com.evolutionandgames.agentbased.simple.AgentBasedSimpleRandomPopulationFactoryTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedPopulationImplTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimplePopulationFactoryTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimpleRandomPopulationFactoryTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimulationDistributionTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimulationFixationTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimulationTimeSeriesTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedSimulationTotalPayoffTest;
+import com.evolutionandgames.agentbased.extensive.AgentBasedWrightFisherProcessWithAssortmentTest;
 
 
 @RunWith(Suite.class)

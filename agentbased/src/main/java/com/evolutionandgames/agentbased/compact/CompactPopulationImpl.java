@@ -1,10 +1,9 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased.compact;
 
 import java.util.HashMap;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.population.CompactPopulation;
 
 public class CompactPopulationImpl implements CompactPopulation {
 	

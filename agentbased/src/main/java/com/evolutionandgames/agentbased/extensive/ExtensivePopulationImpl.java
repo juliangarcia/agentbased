@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased.extensive;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;

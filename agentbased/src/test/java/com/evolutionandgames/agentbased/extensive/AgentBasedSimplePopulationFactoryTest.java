@@ -1,10 +1,10 @@
-package com.evolutionandgames.agentbased.simple;
+package com.evolutionandgames.agentbased.extensive;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
-import com.evolutionandgames.agentbased.simple.AgentBasedSimplePopulationFactory;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
+import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimplePopulationFactory;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.Random;
 

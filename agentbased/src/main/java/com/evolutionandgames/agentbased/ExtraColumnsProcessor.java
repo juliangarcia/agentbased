@@ -1,6 +1,5 @@
 package com.evolutionandgames.agentbased;
 
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
 
 /**
  * This interface allows customization of the time series data. By default the

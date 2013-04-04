@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased;
+package com.evolutionandgames.agentbased.extensive;
 
 import java.io.IOException;
 

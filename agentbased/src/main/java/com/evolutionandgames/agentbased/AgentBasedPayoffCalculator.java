@@ -1,6 +1,5 @@
 package com.evolutionandgames.agentbased;
 
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
 
 /**
  * This interface defines how the payoff should be specified. Given a population,

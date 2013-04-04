@@ -1,9 +1,8 @@
-package com.evolutionandgames.agentbased.population;
+package com.evolutionandgames.agentbased;
 
 import java.util.HashMap;
 import java.util.Set;
 
-import com.evolutionandgames.agentbased.Agent;
 
 public interface AgentBasedPopulation {
 	

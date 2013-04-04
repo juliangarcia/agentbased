@@ -1,6 +1,7 @@
-package com.evolutionandgames.agentbased.population;
+package com.evolutionandgames.agentbased.compact;
 
 import com.evolutionandgames.agentbased.Agent;
+import com.evolutionandgames.agentbased.AgentBasedPopulation;
 
 public interface CompactPopulation extends AgentBasedPopulation {
 	

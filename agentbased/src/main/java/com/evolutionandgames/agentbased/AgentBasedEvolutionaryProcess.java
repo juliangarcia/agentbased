@@ -1,6 +1,5 @@
 package com.evolutionandgames.agentbased;
 
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
 
 /**
  * Interface for agent based evolutionary processes. 

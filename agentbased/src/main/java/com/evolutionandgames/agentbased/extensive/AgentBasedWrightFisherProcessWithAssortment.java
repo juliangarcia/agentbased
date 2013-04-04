@@ -1,11 +1,10 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased.extensive;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedEvolutionaryProcess;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
+import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.population.AgentBasedPopulation;
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.PayoffToFitnessMapping;
 import com.evolutionandgames.jevodyn.utils.Random;

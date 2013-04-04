@@ -1,13 +1,14 @@
-package com.evolutionandgames.agentbased.simple;
+package com.evolutionandgames.agentbased.extensive.simple;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
-import com.evolutionandgames.agentbased.population.AgentBasedPopulationFactory;
-import com.evolutionandgames.agentbased.population.ExtensivePopulation;
+import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
+import com.evolutionandgames.agentbased.simple.AgentSimple;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.Random;
 

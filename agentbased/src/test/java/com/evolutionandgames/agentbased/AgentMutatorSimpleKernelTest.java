@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased;
 
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Assert;

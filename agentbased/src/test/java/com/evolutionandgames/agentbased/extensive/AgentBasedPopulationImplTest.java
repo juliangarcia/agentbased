@@ -1,10 +1,10 @@
-package com.evolutionandgames.agentbased.impl;
+package com.evolutionandgames.agentbased.extensive;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.impl.ExtensivePopulationImpl;
+import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 
