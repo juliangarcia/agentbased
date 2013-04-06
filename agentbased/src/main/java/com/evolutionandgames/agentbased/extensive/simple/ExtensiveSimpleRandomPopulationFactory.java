@@ -13,7 +13,7 @@ import com.evolutionandgames.jevodyn.utils.ArrayUtils;
 import com.evolutionandgames.jevodyn.utils.Random;
 
 
-public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopulationFactory {
+public class ExtensiveSimpleRandomPopulationFactory implements AgentBasedPopulationFactory {
 	
 	private int numberOfTypes;
 	private int populationSize;
@@ -62,13 +62,13 @@ public class AgentBasedSimpleRandomPopulationFactory implements AgentBasedPopula
 	}
 
 
-	public AgentBasedSimpleRandomPopulationFactory(int numberOfTypes, int populationSize) {
+	public ExtensiveSimpleRandomPopulationFactory(int numberOfTypes, int populationSize) {
 		super();
 		this.numberOfTypes = numberOfTypes;
 		this.populationSize = populationSize;
 	}
 	
-	public AgentBasedSimpleRandomPopulationFactory(int numberOfTypes, int populationSize, boolean edge) {
+	public ExtensiveSimpleRandomPopulationFactory(int numberOfTypes, int populationSize, boolean edge) {
 		super();
 		this.numberOfTypes = numberOfTypes;
 		this.populationSize = populationSize;

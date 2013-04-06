@@ -16,7 +16,7 @@ import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.agentbased.extensive.AgentBasedWrightFisherProcessWithAssortment;
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
-import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
+import com.evolutionandgames.agentbased.extensive.simple.ExtensiveSimpleRandomPopulationFactory;
 import com.evolutionandgames.agentbased.extensive.simple.ExtensivePopulationMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
@@ -43,7 +43,7 @@ public class AgentBasedSimulationDistributionTest {
 		int populationSize = 10;
 		AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
 		AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(gameMatrix);
-		AgentBasedPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(numberOfTypes, populationSize);
+		AgentBasedPopulationFactory factory = new ExtensiveSimpleRandomPopulationFactory(numberOfTypes, populationSize);
 		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
 		ExtensivePopulation population = new  ExtensivePopulationImpl(agentArray);
 		AgentBasedEvolutionaryProcess wf = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, 
@@ -76,7 +76,7 @@ public class AgentBasedSimulationDistributionTest {
 		int populationSize = 10;
 		AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
 		AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(gameMatrix);
-		AgentBasedPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(numberOfTypes, populationSize);
+		AgentBasedPopulationFactory factory = new ExtensiveSimpleRandomPopulationFactory(numberOfTypes, populationSize);
 		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
 		ExtensivePopulation population = new  ExtensivePopulationImpl(agentArray);
 		AgentBasedEvolutionaryProcess wf = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, 
@@ -109,7 +109,7 @@ public class AgentBasedSimulationDistributionTest {
 		int populationSize = 10;
 		AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernel(mutationProbability, numberOfTypes));
 		AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(gameMatrix);
-		AgentBasedPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(numberOfTypes, populationSize);
+		AgentBasedPopulationFactory factory = new ExtensiveSimpleRandomPopulationFactory(numberOfTypes, populationSize);
 		Agent[] agentArray = ((ExtensivePopulationImpl)factory.createPopulation()).getAsArrayOfAgents();
 		ExtensivePopulation population = new  ExtensivePopulationImpl(agentArray);
 		AgentBasedEvolutionaryProcess wf = new AgentBasedWrightFisherProcessWithAssortment(population, payoffCalculator, 

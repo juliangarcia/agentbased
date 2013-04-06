@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
-import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
+import com.evolutionandgames.agentbased.extensive.simple.ExtensiveSimpleRandomPopulationFactory;
 import com.evolutionandgames.jevodyn.utils.Random;
 
 
@@ -23,7 +23,7 @@ public class AgentBasedSimpleRandomPopulationFactoryTest {
 			while (numberOfTypes < 2) {
 				numberOfTypes = Random.nextInt(51);
 			}
-			AgentBasedSimpleRandomPopulationFactory factory = new AgentBasedSimpleRandomPopulationFactory(
+			ExtensiveSimpleRandomPopulationFactory factory = new ExtensiveSimpleRandomPopulationFactory(
 					numberOfTypes, populationSize, edge);
 			ExtensivePopulation pop = factory.createPopulation();
 			if (edge) {

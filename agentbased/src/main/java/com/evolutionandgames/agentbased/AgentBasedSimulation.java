@@ -14,7 +14,6 @@ import org.supercsv.io.CsvListWriter;
 import org.supercsv.io.ICsvListWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
 import com.evolutionandgames.jevodyn.utils.Random;
 import com.google.common.util.concurrent.AtomicLongMap;
 
@@ -66,7 +65,7 @@ public class AgentBasedSimulation {
 				fixated = this.process.getPopulation().getSetOfAgents().size() == 1;
 			}
 			// increase positives if it fixated to the mutant type
-			if (((ExtensivePopulation) this.process.getPopulation()).getAgent(0).equals(mutant))
+			if (this.process.getPopulation().getSetOfAgents().iterator().next().equals(mutant))
 				positives++;
 		}
 		return ((double) positives) / numberOfSamples;

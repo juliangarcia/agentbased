@@ -7,7 +7,7 @@ import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
-import com.evolutionandgames.agentbased.extensive.simple.AgentBasedSimpleRandomPopulationFactory;
+import com.evolutionandgames.agentbased.extensive.simple.ExtensiveSimpleRandomPopulationFactory;
 import com.evolutionandgames.agentbased.extensive.simple.ExtensivePopulationMatrixBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
@@ -297,7 +297,7 @@ public class AgentBasedWrightFisherProcessWithAssortmentTest {
 		for (int repetitions = 0; repetitions < 1; repetitions++) {
 			int populationSize = 100000;
 			// everybody is a random type
-			ExtensivePopulation population = new AgentBasedSimpleRandomPopulationFactory(2, populationSize).createPopulation();
+			ExtensivePopulation population = new ExtensiveSimpleRandomPopulationFactory(2, populationSize).createPopulation();
 			AgentBasedPayoffCalculator payoffCalculator = new ExtensivePopulationMatrixBasedPayoffCalculator(Games.prionersDilemma(2.0, 0.0, 3.0, 1.0));
 			// and mutator
 			AgentMutator mutator = new AgentMutatorSimpleKernel(ArrayUtils.uniformMutationKernelWithSelfMutation(mutationProbablity,numberOfTypes));

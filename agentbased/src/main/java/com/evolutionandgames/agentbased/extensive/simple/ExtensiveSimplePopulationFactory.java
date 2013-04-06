@@ -13,7 +13,7 @@ import com.evolutionandgames.agentbased.simple.AgentSimple;
  * @author garcia
  *
  */
-public class AgentBasedSimplePopulationFactory implements
+public class ExtensiveSimplePopulationFactory implements
 		AgentBasedPopulationFactory {
 	
 	private int populationSize;
@@ -35,7 +35,7 @@ public class AgentBasedSimplePopulationFactory implements
 	 * @param populationSize 
 	 * @param sampleAgent
 	 */
-	public AgentBasedSimplePopulationFactory(int populationSize,
+	public ExtensiveSimplePopulationFactory(int populationSize,
 			Agent sampleAgent) {
 		super();
 		this.populationSize = populationSize;
