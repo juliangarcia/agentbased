@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.compact.simple;
+package com.evolutionandgames.agentbased.simple.compact;
 
 import java.util.HashMap;
 

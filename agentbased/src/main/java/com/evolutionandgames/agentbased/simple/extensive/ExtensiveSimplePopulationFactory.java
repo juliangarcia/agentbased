@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.extensive.simple;
+package com.evolutionandgames.agentbased.simple.extensive;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPopulationFactory;

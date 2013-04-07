@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.compact;
+package com.evolutionandgames.agentbased.simple.compact;
 
 import java.util.Iterator;
 
@@ -7,6 +7,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.compact.CompactPopulationImpl;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 public class CompactPopulationMatrixPayoffCalculator implements

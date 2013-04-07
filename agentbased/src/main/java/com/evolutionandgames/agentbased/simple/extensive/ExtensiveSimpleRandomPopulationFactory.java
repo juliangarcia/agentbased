@@ -1,4 +1,4 @@
-package com.evolutionandgames.agentbased.extensive.simple;
+package com.evolutionandgames.agentbased.simple.extensive;
 
 import java.util.ArrayList;
 import java.util.HashMap;

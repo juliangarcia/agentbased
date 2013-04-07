@@ -4,8 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulation;
-import com.evolutionandgames.agentbased.extensive.simple.ExtensiveSimplePopulationFactory;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
+import com.evolutionandgames.agentbased.simple.extensive.ExtensiveSimplePopulationFactory;
 import com.evolutionandgames.jevodyn.utils.Random;
 
 

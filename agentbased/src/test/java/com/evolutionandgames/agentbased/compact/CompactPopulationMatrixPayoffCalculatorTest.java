@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
+import com.evolutionandgames.agentbased.simple.compact.CompactPopulationMatrixPayoffCalculator;
 import com.evolutionandgames.jevodyn.utils.Games;
 
 public class CompactPopulationMatrixPayoffCalculatorTest {
