@@ -40,7 +40,7 @@ public class AgentBasedMoranProcessTest {
 
 	}
 
-	private static final double DELTA = 0.01;
+	private static final double DELTA = 0.025;
 
 	@Before
 	public void setUp() throws Exception {
