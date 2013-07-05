@@ -80,4 +80,9 @@ public class CompactPopulationImpl implements CompactPopulation {
 		return this.populationComposition;
 	}
 
+	@Override
+	public String toString() {
+		return populationComposition.toString();
+	}
+
 }
