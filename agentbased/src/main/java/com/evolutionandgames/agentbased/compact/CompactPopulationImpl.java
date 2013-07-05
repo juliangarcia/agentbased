@@ -1,9 +1,12 @@
 package com.evolutionandgames.agentbased.compact;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
+import com.google.common.base.Joiner;
 
 public class CompactPopulationImpl implements CompactPopulation {
 	
@@ -82,7 +85,19 @@ public class CompactPopulationImpl implements CompactPopulation {
 
 	@Override
 	public String toString() {
-		return populationComposition.toString();
+		//prints as a python dictionary
+		return pythonDictString(populationComposition);
+	}
+	
+	private String pythonDictString(HashMap<Agent, Integer> composition){
+		ArrayList<String> listOfStrings = new ArrayList<String>();
+		for (Map.Entry<Agent, Integer> entry : composition.entrySet()) {
+		    Agent key = entry.getKey();
+		    Integer value = entry.getValue();
+		    listOfStrings.add(key.toString()+":"+value.toString());
+		}
+		Joiner joiner = Joiner.on( "," ).skipNulls();
+		return "{" + joiner.join(listOfStrings) + "}";
 	}
 
 }
