@@ -61,8 +61,9 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 		double[] payoffVector = new double[numberOfTypes];
 		int populationSize = this.population.getSize();
 		for (int i = 0; i < frequencies.length; i++) {
-			frequencies[i]=  ((float) this.population.getDictionaryOfCopies().get(enumeration.get(i))) / populationSize;
-			payoffVector[i] = ((float) this.population.getPayoffOfAgent(enumeration.get(i)));
+			Agent agentI = enumeration.get(i);
+			frequencies[i]=  ((float) this.population.getDictionaryOfCopies().get(agentI)) / populationSize;
+			payoffVector[i] = ((float) this.population.getPayoffOfAgent(agentI));
 			this.totalPopulationPayoff = this.totalPopulationPayoff + payoffVector[i];
 		}
 		double[] fitness= computeFitness(frequencies, payoffVector);
