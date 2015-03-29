@@ -19,7 +19,7 @@ public class ExtensivePopulationImpl implements ExtensivePopulation {
 	public static final boolean EXTENSIVE_TO_STRING = false;
 	private Agent[] agentArray;
 
-	public static String FORMAT = "Strategy : %s, Count : %d";
+	public static String FORMAT = "S: %s, C: %d";
 
 	private double[] payoffsArray;
 	private int size;

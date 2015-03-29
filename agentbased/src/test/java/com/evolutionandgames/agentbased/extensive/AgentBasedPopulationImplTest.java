@@ -94,7 +94,7 @@ public class AgentBasedPopulationImplTest {
 		ExtensivePopulationImpl population = new ExtensivePopulationImpl(
 				array);
 		String string = population.toString();
-		Assert.assertEquals("Strategy : 1, Count : 3; Strategy : 0, Count : 2", string);
+		Assert.assertEquals("S: 1, C: 3; S: 0, C: 2", string);
 
 	}
 
