@@ -24,7 +24,7 @@ public interface ExtensivePopulation extends AgentBasedPopulation {
 	 * Get the agent in a given position.
 	 * @param index
 	 * @return Agent
-	 */
+	 */	
 	public Agent getAgent(int index);
 	
 	

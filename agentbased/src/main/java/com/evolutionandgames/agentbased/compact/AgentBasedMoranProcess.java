@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.AgentBasedEvolutionaryProcess;
-import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
 import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.jevodyn.utils.ArrayUtils;
@@ -21,7 +20,7 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 	private int timeStep = 0;
 	private CompactPopulation population;
 	private double totalPopulationPayoff;
-	private AgentBasedPayoffCalculator payoffCalculator;
+	private CompactPopulationPayoffCalculator payoffCalculator;
 	private PayoffToFitnessMapping mapping;
 	private double intensityOfSelection;
 	private AgentMutator mutator;
@@ -138,7 +137,7 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 
 
 	public AgentBasedMoranProcess(CompactPopulation population,
-			AgentBasedPayoffCalculator payoffCalculator,
+			CompactPopulationPayoffCalculator payoffCalculator,
 			PayoffToFitnessMapping mapping, double intensityOfSelection,
 			AgentMutator mutator) {
 		super();
