@@ -27,8 +27,8 @@ import com.evolutionandgames.jevodyn.utils.Random;
 public class AgentBasedMoranProcessTest {
 
 	private class EveryBodyGetsOnePayoffCalculator implements
-			AgentBasedPayoffCalculator {
-		public void calculatePayoffs(AgentBasedPopulation population) {
+			 CompactPopulationPayoffCalculator {
+		public void calculatePayoffs(CompactPopulation population) {
 			for (Iterator<Agent> iterator = population.getSetOfAgents()
 					.iterator(); iterator.hasNext();) {
 				Agent agent = (Agent) iterator.next();
@@ -55,7 +55,7 @@ public class AgentBasedMoranProcessTest {
 			CompactPopulation population = randomPopulation(numberOfTypes,
 					maximumNumberOfCopiesPerType);
 			int populationSize = population.getSize();
-			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
+			CompactPopulationPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
 			AgentMutator mutator = new AgentMutatorSimpleKernel(
 					ArrayUtils.uniformMutationKernel(0.1, 2));
 			AgentBasedMoranProcess mp = new AgentBasedMoranProcess(population,
@@ -77,7 +77,7 @@ public class AgentBasedMoranProcessTest {
 			CompactPopulation population = randomPopulation(numberOfTypes,
 					maximumNumberOfCopiesPerType);
 			int populationSize = population.getSize();
-			AgentBasedPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
+			CompactPopulationPayoffCalculator payoffCalculator = new EveryBodyGetsOnePayoffCalculator();
 			AgentMutator mutator = new AgentMutatorSimpleKernel(
 					ArrayUtils.uniformMutationKernel(0.1, 3));
 			AgentBasedMoranProcess mp = new AgentBasedMoranProcess(population,

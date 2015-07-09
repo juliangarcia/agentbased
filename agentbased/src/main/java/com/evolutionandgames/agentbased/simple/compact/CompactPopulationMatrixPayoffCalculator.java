@@ -5,13 +5,13 @@ import java.util.Iterator;
 import org.apache.commons.math3.linear.RealMatrix;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
+import com.evolutionandgames.agentbased.compact.CompactPopulation;
 import com.evolutionandgames.agentbased.compact.CompactPopulationImpl;
+import com.evolutionandgames.agentbased.compact.CompactPopulationPayoffCalculator;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
 
 public class CompactPopulationMatrixPayoffCalculator implements
-		AgentBasedPayoffCalculator {
+		CompactPopulationPayoffCalculator {
 
 	private RealMatrix gameMatrix;
 
@@ -20,7 +20,7 @@ public class CompactPopulationMatrixPayoffCalculator implements
 		this.gameMatrix = gameMatrix;
 	}
 
-	public void calculatePayoffs(AgentBasedPopulation population) {
+	public void calculatePayoffs(CompactPopulation population) {
 		double factorNumberOfInteractions = 1.0 / (population.getSize() - 1.0);
 		for (Iterator<Agent> iterator = ((CompactPopulationImpl) population)
 				.getDictionaryOfCopies().keySet().iterator(); iterator
