@@ -21,7 +21,7 @@ public class AgentBasedMoranProcess implements AgentBasedEvolutionaryProcess {
 	private int timeStep = 0;
 	private CompactPopulation population;
 	private double totalPopulationPayoff;
-	private AgentBasedPayoffCalculator payoffCalculator;
+	private CompactPopulationPayoffCalculator payoffCalculator;
 	private PayoffToFitnessMapping mapping;
 	private double intensityOfSelection;
 	private AgentMutator mutator;
