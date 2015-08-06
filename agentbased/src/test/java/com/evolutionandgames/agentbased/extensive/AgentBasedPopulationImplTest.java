@@ -6,6 +6,7 @@ import org.junit.Test;
 import com.evolutionandgames.agentbased.Agent;
 import com.evolutionandgames.agentbased.extensive.ExtensivePopulationImpl;
 import com.evolutionandgames.agentbased.simple.AgentSimple;
+import com.evolutionandgames.jevodyn.utils.Random;
 
 
 public class AgentBasedPopulationImplTest {
@@ -79,6 +80,33 @@ public class AgentBasedPopulationImplTest {
 		population.setPayoffOfAgent(0, 666.0);
 		Assert.assertEquals(666.0, population.getPayoffOfAgent(0));
 
+	}
+	
+	
+	@Test
+	public void testShuffle(){
+		Random.seed();
+		Agent[] array = new Agent[5];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = new AgentSimple(i);
+		}
+		ExtensivePopulationImpl population = new ExtensivePopulationImpl(
+				array);
+		for (int i = 0; i < population.getSize(); i++) {
+			population.setPayoffOfAgent(i, i);
+			
+		}
+		//Agents 0, 1, 2, 3, 4
+		
+		population.shuffle();
+		
+		for (int i = 0; i < population.getSize(); i++) {
+			int payoff = (int) population.getPayoffOfAgent(i);
+			Assert.assertEquals(payoff,((AgentSimple)population.getAgent(i)).getStrategy());
+		}
+		
+		
+		
 	}
 
 	@Test

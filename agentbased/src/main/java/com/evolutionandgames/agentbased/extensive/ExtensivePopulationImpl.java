@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.evolutionandgames.agentbased.Agent;
+import com.evolutionandgames.jevodyn.utils.Random;
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
@@ -116,5 +117,26 @@ public class ExtensivePopulationImpl implements ExtensivePopulation {
 		}
 		return ans;
 	}
+	
+	/***
+	 * Shuffles the population keep track of the indexes.
+	 */
+	public void shuffle(){
+		
+		int[] indexes = Random.randomizeIndices(this.size);
+		
+		Agent[] newAgentArray = new Agent[this.size];
+		double [] newPayoffsArray = new double[this.size];
+		for (int i = 0; i < indexes.length; i++) {
+			newAgentArray[i] = this.agentArray[indexes[i]];
+			newPayoffsArray[i] = this.payoffsArray[indexes[i]];
+		}
+		this.agentArray = newAgentArray;
+		this.payoffsArray = newPayoffsArray;
+	}
+		
+		
+		
+	}
+	
 
-}
