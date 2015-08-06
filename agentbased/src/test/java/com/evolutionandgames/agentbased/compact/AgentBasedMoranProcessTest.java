@@ -11,8 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.evolutionandgames.agentbased.Agent;
-import com.evolutionandgames.agentbased.AgentBasedPayoffCalculator;
-import com.evolutionandgames.agentbased.AgentBasedPopulation;
 import com.evolutionandgames.agentbased.AgentBasedSimulation;
 import com.evolutionandgames.agentbased.AgentMutator;
 import com.evolutionandgames.agentbased.simple.AgentMutatorSimpleKernel;

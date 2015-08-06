@@ -86,7 +86,7 @@ public class AgentBasedPopulationImplTest {
 	@Test
 	public void testShuffle(){
 		Random.seed();
-		Agent[] array = new Agent[5];
+		Agent[] array = new Agent[20];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = new AgentSimple(i);
 		}
